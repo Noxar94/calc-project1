@@ -5,6 +5,7 @@ const accountObj = {
 
   getBalance: function () {
     let balance = 0;
+
     this.balanceArray.forEach(function (Obj) {
       balance += Obj.amount;
     });
@@ -19,6 +20,7 @@ const accountObj = {
 
   withdrawal: function (amount) {
     const balance = this.getBalance();
+
     if (amount > balance) {
       return false;
     } else
@@ -62,10 +64,10 @@ function menu() {
         }
         break;
       case "4":
-        prompt(accountObj.accountName);
+        prompt("Name of account:" + accountObj.accountName);
         break;
       case "5":
-        prompt("bye bye");
+        alert("Exited");
         break;
       default:
         alert("Invalid choice!");
