@@ -5,8 +5,8 @@ const accountObj = {
 
   getBalance: function () {
     let balance = 0;
-    this.balanceArray.forEach(function (amount) {
-      balance += amount;
+    this.balanceArray.forEach(function (Obj) {
+      balance += Obj.amount;
     });
     return balance;
   },
@@ -40,6 +40,8 @@ function menu() {
         prompt("Balance: " + accountObj.getBalance());
         break;
       case "2":
+        const DepositAmount = prompt("Enter deposit amount: ");
+        accountObj.deposit(DepositAmount);
         break;
       case "3":
         break;
