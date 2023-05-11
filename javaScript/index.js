@@ -1,15 +1,23 @@
 // account object!
 const accountObj = {
   accountName: "Jonatan Lundmark",
-  balance: [],
+  balanceArray: [],
 
-  getBalance: function (amount) {},
+  getBalance: function () {
+    let balance = 0;
+    this.balanceArray.forEach(function (amount) {
+      balance += amount;
+    });
+    return balance;
+  },
 
-  deposit: function (amount) {},
+  deposit: function (amount) {
+    this.balanceArray.push({
+      amount: parseFloat(amount),
+    });
+  },
 
   withdrawal: function (amount) {},
-
-  getAccountName: function (amount) {},
 };
 
 function menu() {
@@ -29,20 +37,22 @@ function menu() {
 
     switch (choice) {
       case "1":
+        prompt("Balance: " + accountObj.getBalance());
         break;
       case "2":
         break;
       case "3":
         break;
       case "4":
+        prompt(accountObj.accountName);
         break;
       case "5":
-        prompt("exited");
+        prompt("bye bye");
         break;
       default:
         alert("Invalid choice!");
     }
-  } while (choice !== 5);
+  } while (choice !== "5");
 }
 
 menu();
