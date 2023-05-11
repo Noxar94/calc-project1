@@ -17,25 +17,32 @@ function menu() {
 
   const menu = `
   Select a choice:
-  1. Get balance
+  1. See balance
   2. Deposit
   3. Withdrawal
-  4. Get account name
+  4. See accountname
   5. Exit
   `;
 
-  switch (choice) {
-    case "1":
-      break;
-    case "2":
-      break;
-    case "3":
-      break;
-    case "4":
-      break;
-    case "5":
-      prompt("exited");
-      break;
-    default:
-  }
+  do {
+    choice = prompt(menu + "Enter choice (1-5)");
+
+    switch (choice) {
+      case "1":
+        break;
+      case "2":
+        break;
+      case "3":
+        break;
+      case "4":
+        break;
+      case "5":
+        prompt("exited");
+        break;
+      default:
+        alert("Invalid choice!");
+    }
+  } while (choice !== 5);
 }
+
+menu();
