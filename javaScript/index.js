@@ -18,9 +18,14 @@ const accountObj = {
   },
 
   withdrawal: function (amount) {
-    this.balanceArray.push({
-      amount: -parseFloat(amount),
-    });
+    const balance = this.getBalance();
+    if (amount > balance) {
+      return false;
+    } else
+      this.balanceArray.push({
+        amount: -parseFloat(amount),
+      });
+    return true;
   },
 };
 
@@ -49,7 +54,12 @@ function menu() {
         break;
       case "3":
         const WithdrawalAmount = prompt("Enter withdrawal amount: ");
-        accountObj.withdrawal(WithdrawalAmount);
+        const withdrawn = accountObj.withdrawal(WithdrawalAmount);
+        if (withdrawn) {
+          prompt("Success see balance!");
+        } else {
+          prompt("Not enough balance.");
+        }
         break;
       case "4":
         prompt(accountObj.accountName);
