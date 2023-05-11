@@ -13,9 +13,14 @@ const accountObj = {
   },
 
   deposit: function (amount) {
-    this.balanceArray.push({
-      amount: parseFloat(amount),
-    });
+    if (amount <= 0 || isNaN(amount)) {
+      alert("cant use negative numbers or letters");
+      return menu();
+    } else
+      this.balanceArray.push({
+        amount: parseFloat(amount),
+      });
+    return true;
   },
 
   withdrawal: function (amount) {
@@ -23,6 +28,10 @@ const accountObj = {
 
     if (amount > balance) {
       return false;
+    }
+    if (amount <= 0 || isNaN(amount)) {
+      alert("cant use negative numbers or letters");
+      return menu();
     } else
       this.balanceArray.push({
         amount: -parseFloat(amount),
@@ -52,19 +61,27 @@ function menu() {
         break;
       case "2":
         const DepositAmount = prompt("Enter deposit amount: ");
-        accountObj.deposit(DepositAmount);
+        const deposited = accountObj.deposit(DepositAmount);
+
+        if (deposited) {
+          prompt("Succes! added: " + DepositAmount + "kr too balance");
+        } else {
+          prompt("srry something happed");
+        }
         break;
       case "3":
         const WithdrawalAmount = prompt("Enter withdrawal amount: ");
         const withdrawn = accountObj.withdrawal(WithdrawalAmount);
         if (withdrawn) {
-          prompt("Success see balance!");
+          prompt(
+            "Success! Subtracted: " + WithdrawalAmount + "kr from balance"
+          );
         } else {
           prompt("Not enough balance.");
         }
         break;
       case "4":
-        prompt("Name of account:" + accountObj.accountName);
+        prompt("Name of account: " + accountObj.accountName);
         break;
       case "5":
         alert("Exited");
