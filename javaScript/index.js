@@ -15,7 +15,7 @@ const accountObj = {
   // en funktion för insättning, som lägger till beloppet i balanceArray
   deposit: function (amount) {
     if (amount <= 0 || isNaN(amount)) {
-      // om amount är mindre än noll eller is not a number.
+      // om amount är mindre än noll eller är inte ett nummer.
       alert("cant use negative numbers or letters");
       return menu();
     } else
