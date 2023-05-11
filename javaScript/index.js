@@ -17,7 +17,11 @@ const accountObj = {
     });
   },
 
-  withdrawal: function (amount) {},
+  withdrawal: function (amount) {
+    this.balanceArray.push({
+      amount: -parseFloat(amount),
+    });
+  },
 };
 
 function menu() {
@@ -44,6 +48,8 @@ function menu() {
         accountObj.deposit(DepositAmount);
         break;
       case "3":
+        const WithdrawalAmount = prompt("Enter withdrawal amount: ");
+        accountObj.withdrawal(WithdrawalAmount);
         break;
       case "4":
         prompt(accountObj.accountName);
